@@ -1,0 +1,46 @@
+            <!-- login Area Strat-->
+            <section class="login-area pt-100 pb-100">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-8 offset-lg-2">
+                          <div class="basic-login">
+                              <h3 class="text-center mb-60">Login From Here</h3>
+                              <form [formGroup]="login" (ngSubmit)="onlogin()">
+                                <div class="form-group">
+                                  <label for="signin-nom" class="control-label sr-only">email</label>
+                                  <input type="text" formControlName="email" class="form-control" id="signin-password" value="thisistheusername" placeholder="username"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+                                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                      <div *ngIf="f.email.errors.required"> email is required</div>
+                                  </div>
+                              </div>
+                                <div class="form-group">
+                                  <label >Password</label>
+                                  <input type="password" formControlName="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                      <div *ngIf="f.password.errors.required">Password is required</div>
+                                      <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                  </div>
+                              </div>
+                                <div class="form-group">
+                                  <div class="login-action mb-20 fix">
+                                      <span class="log-rem f-left">
+                                          <input id="remember" type="checkbox" />
+                                          <label for="remember">Remember me!</label>
+                                      </span>
+                                      <span class="forgot-login f-right">
+                                          <a href="#">Lost your password?</a>
+                                      </span>
+                                    </div>
+                                </div>
+                                  <button class="btn btn-icon-green w-100" type="submit"><span class="btn-text">Login Now</span> <span class="btn-border"></span> </button>
+                                  <div class="or-divide"><span>or</span></div>
+                                  <button (click)="gotoregister()" class="btn theme-btn w-100"><span class="btn-text">Register Now</span> <span class="btn-border"></span> </button>
+
+
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          <!-- login Area End-->

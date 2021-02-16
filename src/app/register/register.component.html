@@ -1,0 +1,316 @@
+    <!-- login Area Strat-->
+    <section class="login-area pt-120 pb-120">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8 offset-lg-2">
+                  <div class="basic-login">
+                      <h3 class="text-center mb-60">Signup From Here</h3>
+                      <button class="btn theme-btn-2 w-100" (click)="choixClient()"><span class="btn-text">Client</span> <span class="btn-border"></span> </button>
+
+                      <div class="main-menu text-right">
+                        <nav id="mobile-menu">
+                        <ul>
+
+                          <li class="active"><a (click)="choixClient()">Client</a></li>
+                        <li class="active"><a (click)="choixGerantSpace()">Gerant <i class="far fa-angle-down"></i></a>
+                          <ul class="sub-menu text-left">
+
+                              <li><a (click)="choixGerantSpace()">GerantSpace</a></li>
+                              <li><a (click)="choixGerantArtiste()">GerantArtiste</a></li>
+
+                          </ul>
+
+                      </ul>
+                        </nav>
+                      </div>
+
+
+                      <form  *ngIf="choix=='Client'" [formGroup]="register" (ngSubmit)="registerClient()">
+
+                        <div class="form-group">
+                          <label >Email</label>
+                          <input type="email" formControlName="email" class="form-control" id="signin-email"  placeholder="Email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+                          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                              <div *ngIf="f.email.errors.required">Email is required</div>
+                              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="signin-nom" class="control-label sr-only">username</label>
+                        <input type="text" formControlName="username" class="form-control" id="signin-password" value="thisistheusername" placeholder="username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" >
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required"> username is required</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="signin-nom" class="control-label sr-only">Nom</label>
+                        <input type="text" formControlName="nom" class="form-control" id="signin-password" value="thisisthenom" placeholder="Nom"  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" >
+                        <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                            <div *ngIf="f.nom.errors.required"> Nom is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="signin-prenom" class="control-label sr-only">Prenom</label>
+                      <input type="text" formControlName="prenom" class="form-control" id="signin-prenom" value="thisistheprenom" placeholder="Prenom"  [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" >
+                      <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                          <div *ngIf="f.prenom.errors.required"> Prenom is required</div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label >Tel</label>
+                    <input type="number" formControlName="tel" class="form-control" id="signin-tel" value="thisisthetel" placeholder="+21600000000"  [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" >
+                    <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                        <div *ngIf="f.tel.errors.required">tel is required</div>
+                        <div *ngIf="f.tel.errors.minlength">Password must be at least 8 characters</div>
+                    </div>
+                  </div>
+
+                      <div class="form-group">
+                        <label >Password</label>
+                        <input type="password" formControlName="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="signin-confirmpassword" class="control-label sr-only">ConfirmPassword</label>
+                      <input type="password" formControlName="confirmPassword" class="form-control" id="signin-confirmpassword" value="thisistheconfirmpassword" placeholder="ConfirmPassword"  [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" >
+                      <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                      <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                      <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                  </div>
+                </div>
+
+                          <div class="mt-10"></div>
+                          <button class="btn theme-btn-2 w-100" ><span class="btn-text">Register Now</span> <span class="btn-border"></span> </button>
+                          <div class="or-divide"><span>or</span></div>
+                          <button class="btn btn-icon-green w-100" (click)="gotologin()" ><span class="btn-text">Login Now</span> <span class="btn-border"></span></button>
+                      </form>
+
+
+                      <form  *ngIf="choix=='GerantSpace'" [formGroup]="register" (ngSubmit)="registerGerantSpace()">
+
+                        <div class="form-group">
+                          <label >Email</label>
+                          <input type="email" formControlName="email" class="form-control" id="signin-email"  placeholder="Email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+                          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                              <div *ngIf="f.email.errors.required">Email is required</div>
+                              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="signin-nom" class="control-label sr-only">username</label>
+                        <input type="text" formControlName="username" class="form-control" id="signin-username" value="thisistheusername" placeholder="username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" >
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required"> username is required</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="signin-nom" class="control-label sr-only">Nom</label>
+                        <input type="text" formControlName="nom" class="form-control" id="signin-nom" value="thisisthenom" placeholder="Nom"  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" >
+                        <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                            <div *ngIf="f.nom.errors.required"> Nom is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="signin-prenom" class="control-label sr-only">Prenom</label>
+                      <input type="text" formControlName="prenom" class="form-control" id="signin-prenom" value="thisistheprenom" placeholder="Prenom"  [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" >
+                      <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                          <div *ngIf="f.prenom.errors.required"> Prenom is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="signin-SpaceName" class="control-label sr-only">SpaceName</label>
+                    <input type="text" formControlName="SpaceName" class="form-control" id="signin-SpaceName" value="thisistheSpaceName" placeholder="SpaceName"  [ngClass]="{ 'is-invalid': submitted && f.SpaceName.errors }" >
+                    <div *ngIf="submitted && f.SpaceName.errors" class="invalid-feedback">
+                        <div *ngIf="f.SpaceName.errors.required"> SpaceName is required</div>
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <label >Tel</label>
+                    <input type="number" formControlName="tel" class="form-control" id="signin-tel" value="thisisthetel" placeholder="+21600000000"  [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" >
+                    <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                        <div *ngIf="f.tel.errors.required">tel is required</div>
+                        <div *ngIf="f.tel.errors.minlength">Password must be at least 8 characters</div>
+                    </div>
+                  </div>
+
+                      <div class="form-group">
+                        <label >Password</label>
+                        <input type="password" formControlName="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="signin-confirmpassword" class="control-label sr-only">ConfirmPassword</label>
+                      <input type="password" formControlName="confirmPassword" class="form-control" id="signin-confirmpassword" value="thisistheconfirmpassword" placeholder="ConfirmPassword"  [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" >
+                      <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                      <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                      <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                  </div>
+                </div>
+                <!--
+                <div  *ngIf="currentFile" class="progress">
+                    <div
+                      class="progress-bar progress-bar-info progress-bar-striped"
+                      role="progressbar"
+                      attr.aria-valuenow="{{ progress }}"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      [ngStyle]="{ width: progress + '%' }"
+                    >
+                      {{ progress }}%
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  <label >
+                    <input type="file" (change)="selectfile($event)" />
+
+                  </label>
+
+
+
+                  <div class="alert alert-light" role="alert">{{ message }}</div>
+
+                </div>
+                  -->
+                  <div class="form-group">
+                    <label >
+                      <input type="file" (change)="selectfile($event)" />
+
+                    </label>
+
+
+
+                    <div class="alert alert-light" role="alert">{{ message }}</div>
+
+                  </div>
+
+                          <div class="mt-10"></div>
+                          <button class="btn theme-btn-2 w-100" ><span class="btn-text">Register Now</span> <span class="btn-border"></span> </button>
+                          <div class="or-divide"><span>or</span></div>
+                          <button class="btn btn-icon-green w-100" (click)="gotologin()"><span class="btn-text">Login Now</span> <span class="btn-border"></span></button>
+
+                      </form>
+
+
+
+                      <!--registre Gerant Artiste-->
+
+                      <form  *ngIf="choix=='GerantArtiste'" [formGroup]="register" (ngSubmit)="registerGerantArtiste()">
+
+                        <div class="form-group">
+                          <label >Email</label>
+                          <input type="email" formControlName="email" class="form-control" id="signin-email"  placeholder="Email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+                          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                              <div *ngIf="f.email.errors.required">Email is required</div>
+                              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="signin-nom" class="control-label sr-only">username</label>
+                        <input type="text" formControlName="username" class="form-control" id="signin-password" value="thisistheusername" placeholder="username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" >
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required"> username is required</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="signin-nom" class="control-label sr-only">Nom</label>
+                        <input type="text" formControlName="nom" class="form-control" id="signin-password" value="thisisthenom" placeholder="Nom"  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" >
+                        <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                            <div *ngIf="f.nom.errors.required"> Nom is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="signin-prenom" class="control-label sr-only">Prenom</label>
+                      <input type="text" formControlName="prenom" class="form-control" id="signin-prenom" value="thisistheprenom" placeholder="Prenom"  [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" >
+                      <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                          <div *ngIf="f.prenom.errors.required"> Prenom is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="signin-ArtistName" class="control-label sr-only">ArtistName</label>
+                    <input type="text" formControlName="ArtistName" class="form-control" id="signin-ArtistName" value="thisistheArtistName" placeholder="ArtistName"  [ngClass]="{ 'is-invalid': submitted && f.ArtistName.errors }" >
+                    <div *ngIf="submitted && f.ArtistName.errors" class="invalid-feedback">
+                        <div *ngIf="f.ArtistName.errors.required"> ArtistName is required</div>
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <label >Tel</label>
+                    <input type="number" formControlName="tel" class="form-control" id="signin-tel" value="thisisthetel" placeholder="+21600000000"  [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" >
+                    <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                        <div *ngIf="f.tel.errors.required">tel is required</div>
+                        <div *ngIf="f.tel.errors.minlength">Password must be at least 8 characters</div>
+                    </div>
+                  </div>
+
+                      <div class="form-group">
+                        <label >Password</label>
+                        <input type="password" formControlName="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="signin-confirmpassword" class="control-label sr-only">ConfirmPassword</label>
+                      <input type="password" formControlName="confirmPassword" class="form-control" id="signin-confirmpassword" value="thisistheconfirmpassword" placeholder="ConfirmPassword"  [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" >
+                      <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                      <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                      <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                  </div>
+                  <!--
+                  <div class="form-group">
+                    <label for="signup-password" class="control-label sr-only">File</label>
+                    <input type="file"  class="form-control" (change)="selectfile($event)"/>
+                </div>
+
+                  <div  *ngIf="currentFile" class="progress">
+                    <div
+                      class="progress-bar progress-bar-info progress-bar-striped"
+                      role="progressbar"
+                      attr.aria-valuenow="{{ progress }}"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      [ngStyle]="{ width: progress + '%' }"
+                    >
+                      {{ progress }}%
+                    </div>
+                  </div>
+
+                -->
+
+                <div class="form-group">
+                  <label >
+                    <input type="file" (change)="selectfile($event)" />
+
+                  </label>
+
+
+
+                  <div class="alert alert-light" role="alert">{{ message }}</div>
+
+                </div>
+
+                </div>
+
+
+
+                          <div class="mt-10"></div>
+                          <button class="btn theme-btn-2 w-100" ><span class="btn-text">Register Now</span> <span class="btn-border"></span> </button>
+                          <div class="or-divide"><span>or</span></div>
+                          <button class="btn btn-icon-green w-100" (click)="gotologin()"><span class="btn-text">Login Now</span> <span class="btn-border"></span></button>
+                      </form>
+
+
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- login Area End-->
